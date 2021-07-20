@@ -1,0 +1,356 @@
+messages:
+  not-a-player: '&cOnly in-game players can use this command.'
+  no-permission: '&cYou do not have permission to use this command.'
+  not-enough-xp: '&cYou do not have enough xp to purchase this enchant.'
+  disallowed-name: '&cYou cannot enchant this item as it''s been disallowed.'
+  cannot-use-anvil: '&cYou cannot input custom enchants into an anvil.'
+  enchant-disabled: '&cThis enchant is disabled and cannot be applied.'
+  enchant-purchased: '&7You purchased the enchant &b%enchant% &7for &b%levels% &7levels.'
+  enchant-applied: '&7Successfully applied the enchant &b%enchant%&7.'
+  enchant-already-applied: '&7That enchant has already been applied to this item.'
+  enchant-cannot-apply: '&7This enchant cannot be applied to that item type.'
+
+# The following are sounds for certain actions performed by the player.
+# If you want to disable any of them, set the volume to 0.0.
+sounds:
+  enchant-purchase:
+    sound: LEVEL_UP
+    volume: 1.0
+    pitch: 1.0
+  enchant-apply:
+    sound: ANVIL_LAND
+    volume: 1.0
+    pitch: 1.0
+
+# Below you'll find options to configure the enchants gui.
+inventory:
+  name: '&8Custom Enchants'
+  size: 18
+
+# This will be used to set the enchant item types in the enchants gui.
+shop-item-material: BOOK
+
+# This list contains names of items which you don't want to be able to enchant.
+# You might have plugins which depend on an item lore to check certain variables so this plugin would probably break it.
+blocked-names:
+  - "&b&lCraft Wand"
+  - "&b&lFishing Rod"
+  - "&b&lHarvester Hoe"
+  - "&b&lGrind Sword"
+  - "&b&lLightning Wand"
+  - "&b&lTray Pickaxe"
+  - "&b&lTrench Pickaxe"
+  - "&b&lDispenser Pickaxe"
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                                                                                   #
+#                                               IMPORTANT INFORMATION                                               #
+#                                                                                                                   #
+# For potion-enchants, please take into account the following:                                                      #
+#                                                                                                                   #
+# `cost` is the number of levels to take from the player.                                                           #
+#    Please note that no matter what level the player is, they will always have the same number of levels deducted. #
+#                                                                                                                   #
+# `slot` is where the item is positioned in the gui.                                                                #
+#    Please note that the slot is 1 less than the one you want (0 means slot 1, 1 means slot 2, etc.).              #
+#                                                                                                                   #
+# `enchant-name` is simply the name which will appear on the shop item and in messages so modify it to your liking. #
+#                                                                                                                   #
+# `amplifier` is the level of the potion effect.                                                                    #
+#    Please note that levels are 1 less than the one you want (0 means level 1, 1 means level 2, etc.).             #
+#                                                                                                                   #
+# `potion-effect` is the name of the potion effect to be used.                                                      #
+#    Please note that potion effect names can be strange so look here (https://bit.ly/30MPvqP) for a list of them.  #
+#                                                                                                                   #
+# `enabled` is used to disable certain enchants. If this is set to false, a book item won't show in the gui.        #
+#    Please note that if an armor piece contains an enchant that is disabled, it won't give any effects.            #
+#                                                                                                                   #
+# `applicable-materials` is a list of item types that enchants can be applied to.                                   #
+#    Please note that all the enchants in `potion-enchants` will only work with armor pieces.                       #
+#    Some item names can be weird so you can find a list of all item types here: https://bit.ly/2UKoFvL.            #
+#                                                                                                                   #
+# `lore-enchant` is the text that will be added to the item's lore, you can change this to whatever you want.       #
+# `shop-item` is to configure the item displayed in the enchants gui, you can modify it to your liking.             #
+#                                                                                                                   #
+#                                               IMPORTANT INFORMATION                                               #
+#                                                                                                                   #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+enchants:
+  potion-enchants:
+    fire-resistance:
+      cost: 45
+      slot: 0
+      enchant-name: 'Nether Skin'
+      amplifier: 0
+      potion-effect: 'FIRE_RESISTANCE'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_LEGGINGS
+        - GOLD_LEGGINGS
+        - IRON_LEGGINGS
+        - CHAINMAIL_LEGGINGS
+        - LEATHER_LEGGINGS
+      lore-enchant: '&7Nether Skin I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bleggings'
+          - '&7Information: &bReceive infinite fire resistance'
+    haste:
+      cost: 30
+      slot: 2
+      enchant-name: 'Haste'
+      amplifier: 0
+      potion-effect: 'FAST_DIGGING'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_CHESTPLATE
+        - GOLD_CHESTPLATE
+        - IRON_CHESTPLATE
+        - CHAINMAIL_CHESTPLATE
+        - LEATHER_CHESTPLATE
+      lore-enchant: '&7Haste I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bchestplates'
+          - '&7Information: &bReceive infinite haste'
+    health-boost:
+      cost: 75
+      slot: 3
+      enchant-name: 'Health Boost'
+      amplifier: 1
+      potion-effect: 'HEALTH_BOOST'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_CHESTPLATE
+        - GOLD_CHESTPLATE
+        - IRON_CHESTPLATE
+        - CHAINMAIL_CHESTPLATE
+        - LEATHER_CHESTPLATE
+      lore-enchant: '&7Health Boost I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bchestplates'
+          - '&7Information: &bReceive two extra hearts'
+    jump-boost:
+      cost: 30
+      slot: 5
+      enchant-name: 'Jump Boost'
+      amplifier: 0
+      potion-effect: 'JUMP'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_BOOTS
+        - GOLD_BOOTS
+        - IRON_BOOTS
+        - CHAINMAIL_BOOTS
+        - LEATHER_BOOTS
+      lore-enchant: '&7Pounce I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bboots'
+          - '&7Information: &bReceive infinite jump boost'
+    night-vision:
+      cost: 15
+      slot: 6
+      enchant-name: 'Night Vision'
+      amplifier: 0
+      potion-effect: 'NIGHT_VISION'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_HELMET
+        - GOLD_HELMET
+        - IRON_HELMET
+        - CHAINMAIL_HELMET
+        - LEATHER_HELMET
+      lore-enchant: '&7Lumination I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bhelmets'
+          - '&7Information: &bReceive infinite night vision'
+    regeneration:
+      cost: 70
+      slot: 8
+      enchant-name: 'Regeneration'
+      amplifier: 0
+      potion-effect: 'REGENERATION'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_LEGGINGS
+        - GOLD_LEGGINGS
+        - IRON_LEGGINGS
+        - CHAINMAIL_LEGGINGS
+        - LEATHER_LEGGINGS
+      lore-enchant: '&7Replenish I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bleggings'
+          - '&7Information: &bReceive infinite regeneration'
+    saturation:
+      cost: 60
+      slot: 9
+      enchant-name: 'Saturation'
+      amplifier: 0
+      potion-effect: 'SATURATION'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_HELMET
+        - GOLD_HELMET
+        - IRON_HELMET
+        - CHAINMAIL_HELMET
+        - LEATHER_HELMET
+      lore-enchant: '&7Fatty I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bhelmets'
+          - '&7Information: &bNever lose any hunger'
+    speed:
+      cost: 45
+      slot: 10
+      enchant-name: 'Speed'
+      amplifier: 1
+      potion-effect: 'SPEED'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_BOOTS
+        - GOLD_BOOTS
+        - IRON_BOOTS
+        - CHAINMAIL_BOOTS
+        - LEATHER_BOOTS
+      lore-enchant: '&7Agility I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bboots'
+          - '&7Information: &bReceive infinite speed II'
+    strength:
+      cost: 60
+      slot: 11
+      enchant-name: 'Strength'
+      amplifier: 1
+      potion-effect: 'INCREASE_DAMAGE'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_CHESTPLATE
+        - GOLD_CHESTPLATE
+        - IRON_CHESTPLATE
+        - CHAINMAIL_CHESTPLATE
+        - LEATHER_CHESTPLATE
+      lore-enchant: '&7Vigorous I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bchestplates'
+          - '&7Information: &bReceive infinite strength II'
+    water-breathing:
+      cost: 30
+      slot: 12
+      enchant-name: 'Water Breathing'
+      amplifier: 0
+      potion-effect: 'WATER_BREATHING'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_HELMET
+        - GOLD_HELMET
+        - IRON_HELMET
+        - CHAINMAIL_HELMET
+        - LEATHER_HELMET
+      lore-enchant: '&7Aquifier I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bhelmets'
+          - '&7Information: &bReceive infinite water breathing'
+    resistance:
+      cost: 60
+      slot: 13
+      enchant-name: 'Resistance'
+      amplifier: 0
+      potion-effect: 'DAMAGE_RESISTANCE'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_LEGGINGS
+        - GOLD_LEGGINGS
+        - IRON_LEGGINGS
+        - CHAINMAIL_LEGGINGS
+        - LEATHER_LEGGINGS
+      lore-enchant: '&7Resistance I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bleggings'
+          - '&7Information: &bReceive infinite resistance'
+  custom-enchants:
+    obsidian-breaker:
+      cost: 50
+      slot: 7
+      enchant-name: 'Obsidian Breaker'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_PICKAXE
+        - GOLD_PICKAXE
+        - IRON_PICKAXE
+        - STONE_PICKAXE
+        - WOOD_PICKAXE
+      lore-enchant: '&7Obsidian Breaker I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bpickaxes'
+          - '&7Information: &bInstantly break obsidian blocks'
+    jelly-legs:
+      cost: 60
+      slot: 4
+      enchant-name: 'Jelly Legs'
+      enabled: true
+      applicable-materials:
+        - DIAMOND_BOOTS
+        - GOLD_BOOTS
+        - IRON_BOOTS
+        - CHAINMAIL_BOOTS
+        - LEATHER_BOOTS
+      lore-enchant: '&7Jelly I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bboots'
+          - '&7Information: &bBecome immune to fall damage'
+    grind:
+      cost: 60
+      slot: 1
+      enchant-name: 'Grind'
+      exp-multiplier: 2.0
+      enabled: true
+      applicable-materials:
+        - DIAMOND_SWORD
+        - GOLD_SWORD
+        - IRON_SWORD
+        - STONE_SWORD
+        - WOOD_SWORD
+      lore-enchant: '&7Grind I'
+      shop-item:
+        name: '&b%enchant-name%'
+        lore:
+          - '&7Cost: &b%cost%'
+          - '&7Applicable Items: &bswords'
+          - '&7Information: &bDouble exp drops from killing mobs'
